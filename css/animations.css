@@ -1,0 +1,164 @@
+/* ==========================================================================
+   ORAL GOLD ODONTOLOGIA — SISTEMA DE ANIMAÇÕES & EFEITOS DE SCROLL
+   Benchmark de fluidez, elegância e ritmo visual inspirado na TR Turismo
+   ========================================================================== */
+
+/* --- CURVA DE TRANSIÇÃO E VELOCIDADE PRINCIPAL --- */
+:root {
+  --reveal-timing: cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-duration: 0.85s;
+}
+
+/* --- ESTADOS BASE DO SCROLL REVEAL --- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity var(--reveal-duration) var(--reveal-timing),
+              transform var(--reveal-duration) var(--reveal-timing);
+  will-change: opacity, transform;
+}
+
+/* Quando o elemento entra no campo de visão */
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* --- VARIANTES DE MOVIMENTO --- */
+
+/* Fade In Puro (Para textos explicativos ou planos de fundo) */
+[data-reveal="fade-in"] {
+  transform: none;
+  transition: opacity var(--reveal-duration) var(--reveal-timing);
+}
+
+[data-reveal="fade-in"].is-revealed {
+  opacity: 1;
+}
+
+/* Slide suave a partir da direita */
+[data-reveal="slide-left"] {
+  transform: translateX(40px);
+}
+
+[data-reveal="slide-left"].is-revealed {
+  transform: translateX(0);
+}
+
+/* Slide suave a partir da esquerda */
+[data-reveal="slide-right"] {
+  transform: translateX(-40px);
+}
+
+[data-reveal="slide-right"].is-revealed {
+  transform: translateX(0);
+}
+
+/* Efeito de Escala Orgânica (Para imagens de destaque e molduras) */
+[data-reveal="zoom-out"] {
+  transform: scale(0.93) translateY(20px);
+}
+
+[data-reveal="zoom-out"].is-revealed {
+  transform: scale(1) translateY(0);
+}
+
+/* Revelação progressiva de títulos (Mask clip reveal) */
+.title-mask-reveal {
+  overflow: hidden;
+  display: block;
+}
+
+.title-mask-reveal span {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.title-mask-reveal.is-revealed span {
+  transform: translateY(0);
+}
+
+/* --- STAGGERED DELAYS (ENTRADAS EM CASCATA SUAVE) --- */
+[data-delay="100"] { transition-delay: 0.10s; }
+[data-delay="150"] { transition-delay: 0.15s; }
+[data-delay="200"] { transition-delay: 0.20s; }
+[data-delay="250"] { transition-delay: 0.25s; }
+[data-delay="300"] { transition-delay: 0.30s; }
+[data-delay="350"] { transition-delay: 0.35s; }
+[data-delay="400"] { transition-delay: 0.40s; }
+[data-delay="500"] { transition-delay: 0.50s; }
+[data-delay="600"] { transition-delay: 0.60s; }
+
+/* --- EFEITO PARALLAX SUTIL EM IMAGENS --- */
+.parallax-layer {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* --- MICROINTERAÇÕES E DETALHES --- */
+
+/* Brilho pulsante suave nos selos de credibilidade */
+@keyframes subtleFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating-badge {
+  animation: subtleFloat 5s ease-in-out infinite;
+}
+
+/* Brilho dourado suave nas bordas de cards selecionados */
+@keyframes goldPulseBorder {
+  0%, 100% {
+    border-color: rgba(197, 160, 89, 0.25);
+  }
+  50% {
+    border-color: rgba(197, 160, 89, 0.55);
+  }
+}
+
+.gold-glow-border {
+  animation: goldPulseBorder 4s ease-in-out infinite;
+}
+
+/* Linha de progresso da jornada do paciente */
+.journey-line-fill {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 2px;
+  height: 0%;
+  background: var(--gold-gradient);
+  transition: height 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.journey-steps.is-revealed .journey-line-fill {
+  height: 100%;
+}
+
+/* Redução de Movimento para Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal="slide-left"],
+  [data-reveal="slide-right"],
+  [data-reveal="zoom-out"],
+  .parallax-layer {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .title-mask-reveal span {
+    transform: none !important;
+  }
+}

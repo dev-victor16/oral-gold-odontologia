@@ -1,0 +1,1861 @@
+/* ==========================================================================
+   ORAL GOLD ODONTOLOGIA — DESIGN SYSTEM & LUXURY STYLES
+   Inspirado no padrão estético, ritmo e fluidez do site TR Turismo
+   Local: Ibirité - MG
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* --- VARIÁVEIS DO SISTEMA DE DESIGN --- */
+:root {
+  /* Cores Principais - Paleta Luxo Neutro & Ouro Nobre */
+  --bg-body: #FAF9F5;
+  --bg-surface: #FFFFFF;
+  --bg-surface-soft: #F4F2EC;
+  --bg-dark: #0D1115;
+  --bg-dark-card: #151B21;
+  --bg-dark-surface: #1B232B;
+
+  /* Champanhe & Ouro Nobre (Sofisticado, nunca amarelado artificial) */
+  --gold-primary: #C5A059;
+  --gold-light: #E0C793;
+  --gold-dark: #9A7733;
+  --gold-glow: rgba(197, 160, 89, 0.22);
+  --gold-subtle: rgba(197, 160, 89, 0.08);
+  --gold-border: rgba(197, 160, 89, 0.28);
+  --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #B88E3E 100%);
+  --gold-gradient-dark: linear-gradient(135deg, #C5A059 0%, #8C6623 100%);
+
+  /* Tipografia & Contrastes */
+  --text-primary: #12171B;
+  --text-secondary: #4F5A65;
+  --text-muted: #828E9A;
+  --text-light: #F7F9FA;
+  --text-light-secondary: #A6B4C2;
+  --text-light-muted: #6E7C8B;
+
+  /* Bordas & Divisões */
+  --border-light: rgba(18, 23, 27, 0.07);
+  --border-card: rgba(197, 160, 89, 0.18);
+  --border-dark: rgba(255, 255, 255, 0.09);
+
+  /* Sombras Estruturadas & Profundidade */
+  --shadow-sm: 0 2px 8px rgba(18, 23, 27, 0.04);
+  --shadow-md: 0 10px 30px -5px rgba(18, 23, 27, 0.06);
+  --shadow-lg: 0 20px 45px -10px rgba(18, 23, 27, 0.09);
+  --shadow-gold: 0 12px 30px -8px rgba(197, 160, 89, 0.35);
+
+  /* Famílias Tipográficas */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Espaçamentos e Dimensões */
+  --container-max: 1240px;
+  --section-padding-y: clamp(4.5rem, 8vw, 7.5rem);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Curva de Aceleração Premium (Mesma utilizada em sites Awwwards) */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.25s var(--ease-smooth);
+  --transition-normal: 0.4s var(--ease-smooth);
+  --transition-slow: 0.8s var(--ease-smooth);
+}
+
+/* --- RESET & BASE --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+}
+
+img, picture, video {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* --- ESTRUTURA DO CONTAINER --- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 3vw, 2.5rem);
+  padding-right: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+/* --- BADGES & ETIQUETAS EDITORIAIS --- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.825rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 1rem;
+}
+
+.eyebrow-dark {
+  color: var(--gold-light);
+}
+
+.eyebrow-pill {
+  background: var(--gold-subtle);
+  border: 1px solid var(--border-card);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+}
+
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-primary);
+  display: inline-block;
+}
+
+/* --- TIPOGRAFIA EDITORIAL --- */
+.title-hero {
+  font-family: var(--font-display);
+  font-size: clamp(2.35rem, 5.2vw, 4.1rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+}
+
+.title-hero span.gold {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+.title-section {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.title-section.light {
+  color: #FFFFFF;
+}
+
+.title-section span.gold {
+  color: var(--gold-primary);
+}
+
+.desc-section {
+  font-size: clamp(1.025rem, 1.3vw, 1.18rem);
+  color: var(--text-secondary);
+  font-weight: 400;
+  max-width: 640px;
+  line-height: 1.7;
+}
+
+.desc-section.light {
+  color: var(--text-light-secondary);
+}
+
+/* --- BOTÕES PREMIUM & MICROINTERAÇÕES --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1.85rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--gold-gradient);
+  color: #1A1408;
+  box-shadow: var(--shadow-gold);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -8px rgba(197, 160, 89, 0.55);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0) 100%);
+  transform: rotate(25deg);
+  transition: all 0.75s ease;
+}
+
+.btn-primary:hover::after {
+  left: 130%;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-secondary-light {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary-light:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-whatsapp-solid {
+  background: #25D366;
+  color: #FFFFFF;
+  box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-whatsapp-solid:hover {
+  background: #20BA5A;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px -5px rgba(37, 211, 102, 0.45);
+}
+
+/* ==========================================================================
+   HEADER / BARRA DE NAVEGAÇÃO
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all var(--transition-normal);
+  padding: 1.15rem 0;
+}
+
+.site-header.scrolled {
+  padding: 0.75rem 0;
+  background: rgba(13, 17, 21, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Logo Oral Gold */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.logo-symbol {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--gold-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #13171B;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  box-shadow: 0 6px 18px rgba(197, 160, 89, 0.35);
+  transition: transform var(--transition-fast);
+}
+
+.brand-logo:hover .logo-symbol {
+  transform: rotate(4deg) scale(1.04);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.28rem;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  line-height: 1.1;
+}
+
+.logo-name span {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-sub {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-light-muted);
+  font-weight: 500;
+}
+
+/* Menu de Navegação */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.92rem;
+  font-weight: 500;
+  position: relative;
+  padding: 0.4rem 0;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold-primary);
+  transition: width var(--transition-normal);
+  border-radius: 2px;
+}
+
+.nav-link:hover {
+  color: #FFFFFF;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Status de Funcionamento em tempo real */
+.header-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #C8D3DC;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #25D366;
+  position: relative;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.45);
+  animation: pulseBeacon 2s infinite;
+}
+
+@keyframes pulseBeacon {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  70% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #FFFFFF;
+  transition: all var(--transition-fast);
+}
+
+/* ==========================================================================
+   HERO SECTION (ALTO IMPACTO, ESCURO & DOURADO)
+   ========================================================================== */
+.hero-section {
+  min-height: 100vh;
+  background: radial-gradient(circle at 80% 20%, rgba(197, 160, 89, 0.12) 0%, rgba(13, 17, 21, 0) 50%),
+              radial-gradient(circle at 10% 80%, rgba(30, 41, 51, 0.5) 0%, rgba(13, 17, 21, 0) 40%),
+              var(--bg-dark);
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: calc(85px + clamp(3rem, 6vw, 5rem));
+  padding-bottom: clamp(4rem, 7vw, 6rem);
+  overflow: hidden;
+}
+
+.hero-ambient-glow {
+  position: absolute;
+  top: 15%;
+  right: -5%;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, rgba(197, 160, 89, 0) 70%);
+  pointer-events: none;
+  filter: blur(50px);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  backdrop-filter: blur(12px);
+}
+
+.hero-badge .stars {
+  color: #F8C146;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.hero-badge span.text {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #E2E8F0;
+  letter-spacing: 0.02em;
+}
+
+.hero-badge span.sep {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.hero-desc {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  color: var(--text-light-secondary);
+  line-height: 1.7;
+  max-width: 580px;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.hero-trust-list {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  color: var(--text-light-muted);
+  font-weight: 500;
+}
+
+.trust-item svg {
+  color: var(--gold-primary);
+  flex-shrink: 0;
+}
+
+/* Composição Visual do Hero */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 490px;
+  aspect-ratio: 4 / 4.7;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(197, 160, 89, 0.25);
+}
+
+.hero-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 1.2s var(--ease-smooth);
+}
+
+.hero-image-wrapper:hover img {
+  transform: scale(1.03);
+}
+
+/* Selo Flutuante 5 Estrelas no Hero */
+.floating-badge {
+  position: absolute;
+  bottom: 2rem;
+  left: -1.5rem;
+  background: rgba(21, 27, 33, 0.88);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  backdrop-filter: blur(16px);
+  padding: 1rem 1.35rem;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+}
+
+.badge-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--gold-subtle);
+  border: 1px solid var(--border-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-primary);
+  font-size: 1.2rem;
+}
+
+.badge-text strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.badge-text span {
+  font-size: 0.76rem;
+  color: var(--text-light-secondary);
+}
+
+/* ==========================================================================
+   FAIXA DE CREDIBILIDADE / DADOS CONFIRMADOS
+   ========================================================================== */
+.credibility-section {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-light);
+  position: relative;
+  z-index: 10;
+  padding: 2.25rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.credibility-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+}
+
+.cred-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  padding-right: 1rem;
+  position: relative;
+}
+
+.cred-card:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: var(--border-light);
+}
+
+.cred-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--gold-subtle);
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-dark);
+  flex-shrink: 0;
+}
+
+.cred-info strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.cred-info span {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   SOBRE A ORAL GOLD (COMPOSIÇÃO ASSIMÉTRICA & EDITORIAL)
+   ========================================================================== */
+.about-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--bg-body);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(3rem, 6vw, 5.5rem);
+  align-items: center;
+}
+
+.about-visual-cluster {
+  position: relative;
+}
+
+.about-main-frame {
+  width: 100%;
+  aspect-ratio: 4 / 3.4;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+  position: relative;
+}
+
+.about-main-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-smooth);
+}
+
+.about-main-frame:hover img {
+  transform: scale(1.03);
+}
+
+.about-accent-card {
+  position: absolute;
+  bottom: -2.5rem;
+  right: -1.5rem;
+  background: var(--bg-dark-card);
+  border: 1px solid var(--border-card);
+  color: #FFFFFF;
+  padding: 1.75rem 2rem;
+  border-radius: 20px;
+  max-width: 290px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+}
+
+.about-accent-card .num {
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+}
+
+.about-accent-card p {
+  font-size: 0.84rem;
+  color: var(--text-light-secondary);
+  margin-top: 0.4rem;
+  line-height: 1.45;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.about-manifesto {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--text-primary);
+  border-left: 3px solid var(--gold-primary);
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.about-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--text-secondary);
+  font-size: 1.025rem;
+  line-height: 1.75;
+}
+
+.about-pillars {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.pillar-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  padding: 1.25rem 1.4rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.pillar-box:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.pillar-box h4 {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.pillar-box p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   ESPECIALIDADES ODONTOLÓGICAS (VITRINE DE ALTO PADRÃO)
+   ========================================================================== */
+.specialties-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--bg-surface);
+  position: relative;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+.specialties-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.specialty-card {
+  background: var(--bg-body);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.specialty-card:hover {
+  border-color: var(--border-card);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.spec-img-box {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  position: relative;
+}
+
+.spec-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease-smooth);
+}
+
+.specialty-card:hover .spec-img-box img {
+  transform: scale(1.06);
+}
+
+.spec-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(18, 23, 27, 0.75);
+  backdrop-filter: blur(8px);
+  color: var(--gold-light);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.spec-body {
+  padding: 1.75rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.spec-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+  line-height: 1.25;
+}
+
+.spec-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.spec-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.spec-features li {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.spec-features li svg {
+  color: var(--gold-primary);
+  flex-shrink: 0;
+}
+
+.spec-action {
+  margin-top: auto;
+}
+
+.btn-spec {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.15rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.specialty-card:hover .btn-spec {
+  background: var(--gold-primary);
+  color: #1A1408;
+  border-color: var(--gold-primary);
+}
+
+/* ==========================================================================
+   EXPERIÊNCIA DO PACIENTE (JORNADA PROGRESSIVA EM 4 ETAPAS)
+   ========================================================================== */
+.experience-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--bg-dark);
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 30%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, rgba(13, 17, 21, 0) 70%);
+  pointer-events: none;
+}
+
+.journey-container {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.journey-visual {
+  position: relative;
+}
+
+.journey-visual-frame {
+  width: 100%;
+  aspect-ratio: 4 / 4.2;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.journey-visual-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.journey-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.step-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  gap: 1.25rem;
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.step-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(197, 160, 89, 0.4);
+  transform: translateX(6px);
+}
+
+.step-number {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gold-light);
+  line-height: 1;
+  min-width: 40px;
+}
+
+.step-info h4 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.35rem;
+}
+
+.step-info p {
+  font-size: 0.9rem;
+  color: var(--text-light-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   DIFERENCIAIS REAIS DA ORAL GOLD
+   ========================================================================== */
+.differentials-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--bg-body);
+}
+
+.differentials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.diff-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 2.25rem 2rem;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.diff-card:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.diff-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--gold-subtle);
+  border: 1px solid var(--border-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-dark);
+}
+
+.diff-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.diff-card p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   DEPOIMENTOS (AVALIAÇÃO 5.0 ESTRELAS NO GOOGLE)
+   ========================================================================== */
+.testimonials-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.google-review-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg-body);
+  border: 1px solid var(--border-light);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 2rem;
+}
+
+.google-logo-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.google-score {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.google-stars {
+  color: #FBBC05;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+}
+
+.google-count {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: var(--bg-body);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.testimonial-card:hover {
+  border-color: var(--border-card);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.quote-stars {
+  color: #FBBC05;
+  font-size: 0.88rem;
+  letter-spacing: 1px;
+}
+
+.testimonial-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold-subtle);
+  border: 1px solid var(--border-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--gold-dark);
+}
+
+.author-info strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+.author-info span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   LOCALIZAÇÃO, HORÁRIOS & MAPA
+   ========================================================================== */
+.location-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--bg-body);
+  position: relative;
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: stretch;
+}
+
+.location-details {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 3.5vw, 2.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.loc-item {
+  display: flex;
+  gap: 1.1rem;
+}
+
+.loc-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--gold-subtle);
+  border: 1px solid var(--border-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-dark);
+  flex-shrink: 0;
+}
+
+.loc-content h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.loc-content p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin-top: 0.5rem;
+}
+
+.schedule-table tr {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.schedule-table td {
+  padding: 0.5rem 0;
+}
+
+.schedule-table td:last-child {
+  text-align: right;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.map-wrapper {
+  width: 100%;
+  min-height: 420px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
+  position: relative;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  border: 0;
+}
+
+/* ==========================================================================
+   CTA FINAL DE ALTO IMPACTO
+   ========================================================================== */
+.final-cta-section {
+  padding: clamp(5rem, 8vw, 8rem) 0;
+  background: radial-gradient(circle at center, #18222B 0%, #0D1115 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.final-cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+}
+
+.final-cta-content {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.final-cta-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+.final-cta-content p {
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  color: var(--text-light-secondary);
+  line-height: 1.7;
+}
+
+.final-cta-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   FOOTER (INSTITUCIONAL & SEO LOCAL)
+   ========================================================================== */
+.site-footer {
+  background: #090C0E;
+  color: #FFFFFF;
+  padding-top: 4.5rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr 1fr 1.1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  color: var(--text-light-muted);
+  line-height: 1.65;
+  max-width: 320px;
+}
+
+.footer-legal-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--text-light-muted);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  width: fit-content;
+}
+
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.footer-col ul a {
+  font-size: 0.88rem;
+  color: var(--text-light-secondary);
+  transition: color var(--transition-fast);
+}
+
+.footer-col ul a:hover {
+  color: var(--gold-light);
+  padding-left: 3px;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 2rem;
+  font-size: 0.82rem;
+  color: var(--text-light-muted);
+}
+
+.footer-bottom a {
+  color: var(--text-light-secondary);
+}
+
+.footer-bottom a:hover {
+  color: var(--gold-light);
+}
+
+/* ==========================================================================
+   BOTÃO FLUTUANTE DO WHATSAPP
+   ========================================================================== */
+.whatsapp-floating {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+}
+
+.whatsapp-bubble {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-light);
+  opacity: 0;
+  transform: translateX(10px);
+  pointer-events: none;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+}
+
+.whatsapp-floating:hover .whatsapp-bubble {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.whatsapp-btn-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+  position: relative;
+  transition: transform var(--transition-fast);
+}
+
+.whatsapp-btn-circle:hover {
+  transform: scale(1.08);
+}
+
+.whatsapp-btn-circle::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(37, 211, 102, 0.5);
+  animation: pulseBeacon 2.2s infinite;
+}
+
+/* ==========================================================================
+   MODAL DE AGENDAMENTO INTELIGENTE
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 17, 21, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.modal-backdrop.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  background: var(--bg-surface);
+  width: 100%;
+  max-width: 540px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-card);
+  padding: clamp(2rem, 4vw, 2.75rem);
+  position: relative;
+  transform: translateY(20px) scale(0.97);
+  transition: all var(--transition-normal);
+}
+
+.modal-backdrop.is-active .modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: #EAE6DE;
+  color: var(--text-primary);
+}
+
+.modal-header {
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.modal-header p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-top: 0.35rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.45rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--bg-body);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--gold-primary);
+  background: #FFFFFF;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MOBILE & TABLET)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .hero-content {
+    align-items: center;
+  }
+
+  .hero-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-trust-list {
+    justify-content: center;
+  }
+
+  .floating-badge {
+    left: 1rem;
+    bottom: 1rem;
+  }
+
+  .credibility-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .cred-card:nth-child(2)::after {
+    display: none;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .about-accent-card {
+    right: 1rem;
+    bottom: -1.5rem;
+  }
+
+  .specialties-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .journey-container {
+    grid-template-columns: 1fr;
+  }
+
+  .differentials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links, .header-status, .header-cta {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 380px;
+    height: 100vh;
+    background: #11161B;
+    z-index: 1500;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: right var(--transition-normal);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-menu-drawer.is-open {
+    right: 0;
+  }
+
+  .mobile-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+
+  .mobile-drawer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .mobile-drawer-links a {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    display: block;
+  }
+
+  .credibility-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .cred-card::after {
+    display: none !important;
+  }
+
+  .specialties-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .differentials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .whatsapp-bubble {
+    display: none;
+  }
+
+  .whatsapp-floating {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
