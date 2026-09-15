@@ -1,6 +1,7 @@
 /* ==========================================================================
-   ORAL GOLD ODONTOLOGIA — DESIGN SYSTEM EDITORIAL & HUMANO
-   Inspirado no ritmo, naturalidade e fluidez do site TR Turismo
+   ORAL GOLD ODONTOLOGIA — DESIGN SYSTEM ARQUITETURAL & EDITORIAL
+   Padrão de acabamento, fluidez e naturalidade inspirado no site TR Turismo
+   Bordas precisas (sem botões redondinhos ou aspecto de template de IA)
    Local: Palmares, Ibirité - MG
    ========================================================================== */
 
@@ -8,47 +9,48 @@
 
 /* --- VARIÁVEIS DE DESIGN --- */
 :root {
-  /* Tons Naturais & Alabastro (Calmos, sem saturação artificial) */
+  /* Tons Naturais & Alabastro */
   --bg-body: #F9F8F5;
   --bg-surface: #FFFFFF;
   --bg-surface-subtle: #F2EFE9;
-  --bg-dark: #0F1316;
-  --bg-dark-surface: #161C22;
+  --bg-dark: #0D1013;
+  --bg-dark-surface: #14191E;
 
-  /* Champanhe Suave (Discreto, refinado, nunca dourado chamativo) */
+  /* Champanhe Suave (Elegante, sem saturação) */
   --champagne: #C5A059;
   --champagne-light: #E4CF9F;
   --champagne-muted: #9E7F40;
   --champagne-subtle: rgba(197, 160, 89, 0.08);
   --champagne-border: rgba(197, 160, 89, 0.22);
 
-  /* Tipografia & Hierarquia */
+  /* Tipografia */
   --text-main: #13171A;
   --text-body: #4E5964;
   --text-muted: #7E8C99;
   --text-white: #F8FAFC;
   --text-white-dim: #9FAEB9;
 
-  /* Linhas e Divisórias Sutis */
-  --hairline: rgba(19, 23, 26, 0.08);
-  --hairline-dark: rgba(255, 255, 255, 0.08);
+  /* Linhas e Divisórias Estruturais */
+  --hairline: rgba(19, 23, 26, 0.09);
+  --hairline-dark: rgba(255, 255, 255, 0.1);
 
   /* Fontes */
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
+  /* Cantos Arquiteturais Precisos (Sem componentes redondinhos de IA) */
+  --radius-sharp: 0px;
+  --radius-subtle: 2px;
+  --radius-sm: 4px;
+
   /* Espaçamentos Generosos (Respiro Visual) */
   --container-max: 1220px;
   --section-spacing: clamp(5.5rem, 9vw, 8.5rem);
-  --radius-sm: 6px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
-  --radius-pill: 9999px;
 
   /* Transições Orgânicas */
   --ease-natural: cubic-bezier(0.16, 1, 0.3, 1);
-  --t-fast: 0.25s var(--ease-natural);
-  --t-smooth: 0.5s var(--ease-natural);
+  --t-fast: 0.22s var(--ease-natural);
+  --t-smooth: 0.45s var(--ease-natural);
 }
 
 /* --- RESET BÁSICO --- */
@@ -107,15 +109,15 @@ input, select {
   padding-right: clamp(1.25rem, 3.5vw, 2.5rem);
 }
 
-/* --- DETALHES EDITORIAIS --- */
+/* --- DETALHES EDITORIAIS RETILÍNEOS --- */
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   font-family: var(--font-heading);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--champagne-muted);
   margin-bottom: 0.85rem;
@@ -125,11 +127,10 @@ input, select {
   color: var(--champagne-light);
 }
 
-.eyebrow-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--champagne);
+.eyebrow-line {
+  width: 16px;
+  height: 1px;
+  background: currentColor;
   display: inline-block;
 }
 
@@ -172,18 +173,19 @@ input, select {
   color: var(--text-white-dim);
 }
 
-/* --- BOTÕES AUTÊNTICOS & DISCRETOS --- */
+/* --- BOTÕES ARQUITETURAIS (RETILÍNEOS, SEM REDONDEZ DE IA) --- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1.65rem;
-  border-radius: var(--radius-pill);
+  gap: 0.65rem;
+  padding: 0.85rem 1.85rem;
+  border-radius: var(--radius-subtle);
   font-family: var(--font-heading);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-decoration: none;
   transition: all var(--t-fast);
   white-space: nowrap;
@@ -191,25 +193,26 @@ input, select {
 
 .btn-primary {
   background: var(--champagne);
-  color: #111417;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #0E1215;
+  border: 1px solid var(--champagne);
 }
 
 .btn-primary:hover {
   background: #D4AF65;
+  border-color: #D4AF65;
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px -6px rgba(197, 160, 89, 0.4);
+  box-shadow: 0 8px 20px -6px rgba(197, 160, 89, 0.45);
 }
 
 .btn-ghost-dark {
   background: transparent;
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .btn-ghost-dark:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);
 }
 
@@ -221,6 +224,19 @@ input, select {
 
 .btn-outline-light:hover {
   border-color: var(--text-main);
+  background: rgba(19, 23, 26, 0.03);
+  transform: translateY(-2px);
+}
+
+.btn-ghost-light {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.45);
   transform: translateY(-2px);
 }
 
@@ -233,7 +249,7 @@ input, select {
 .btn-whatsapp-clean:hover {
   background: #20BA5A;
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px -6px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 8px 18px -5px rgba(37, 211, 102, 0.45);
 }
 
 /* ==========================================================================
@@ -251,7 +267,7 @@ input, select {
 
 .site-header.scrolled {
   padding: 0.8rem 0;
-  background: rgba(15, 19, 22, 0.92);
+  background: rgba(13, 16, 19, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--hairline-dark);
@@ -297,8 +313,9 @@ input, select {
 
 .nav-links-clean a {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
+  letter-spacing: 0.02em;
   transition: color var(--t-fast);
 }
 
@@ -315,20 +332,20 @@ input, select {
 .live-status {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   font-size: 0.76rem;
   color: var(--text-white-dim);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .status-dot {
   width: 6px;
   height: 6px;
-  border-radius: 50%;
   background: #25D366;
+  display: inline-block;
 }
 
 .nav-toggle-btn {
@@ -340,7 +357,7 @@ input, select {
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
+  border-radius: var(--radius-subtle);
 }
 
 .nav-toggle-btn span {
@@ -351,21 +368,21 @@ input, select {
 }
 
 /* ==========================================================================
-   HERO EDITORIAL & NATURAL
+   HERO EDITORIAL COM ENQUADRAMENTO ARQUITETURAL
    ========================================================================== */
 .hero-editorial {
-  min-height: 94vh;
+  min-height: 92vh;
   background: var(--bg-dark);
   position: relative;
   display: flex;
   align-items: center;
-  padding-top: calc(80px + clamp(3rem, 6vw, 5rem));
-  padding-bottom: clamp(4rem, 7vw, 6rem);
+  padding-top: calc(80px + clamp(3rem, 5vw, 4.5rem));
+  padding-bottom: clamp(3.5rem, 6vw, 5.5rem);
 }
 
 .hero-grid-clean {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.12fr 0.88fr;
   gap: clamp(2.5rem, 5vw, 4.5rem);
   align-items: center;
 }
@@ -373,18 +390,25 @@ input, select {
 .hero-text-col {
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 1.35rem;
 }
 
 .hero-tagline {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.65rem;
   color: var(--champagne-light);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.hero-tagline::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--champagne);
 }
 
 .hero-actions {
@@ -401,30 +425,30 @@ input, select {
 
 .hero-photo-wrap {
   width: 100%;
-  aspect-ratio: 4 / 4.7;
-  border-radius: var(--radius-lg);
+  aspect-ratio: 4 / 4.6;
+  border-radius: var(--radius-subtle);
   overflow: hidden;
-  box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .hero-photo-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 25%;
 }
 
 .hero-pill-badge {
   position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  background: rgba(15, 19, 22, 0.88);
+  bottom: 1.25rem;
+  left: 1.25rem;
+  background: rgba(13, 16, 19, 0.9);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 0.65rem 1.15rem;
-  border-radius: var(--radius-pill);
-  font-size: 0.82rem;
+  border-radius: var(--radius-subtle);
+  font-size: 0.8rem;
   color: #FFFFFF;
   display: flex;
   align-items: center;
@@ -436,12 +460,12 @@ input, select {
 }
 
 /* ==========================================================================
-   FAIXA DE CREDIBILIDADE (FITA MINIMALISTA SEM CARDS)
+   FITA DE CREDIBILIDADE (LINHAS FINAS, SEM CARDS)
    ========================================================================== */
 .ribbon-section {
   background: var(--bg-surface);
   border-bottom: 1px solid var(--hairline);
-  padding: 1.85rem 0;
+  padding: 1.75rem 0;
 }
 
 .ribbon-row {
@@ -472,12 +496,12 @@ input, select {
 
 .ribbon-divider {
   width: 1px;
-  height: 32px;
+  height: 28px;
   background: var(--hairline);
 }
 
 /* ==========================================================================
-   SOBRE A ORAL GOLD (EDITORIAL & NARRATIVA HONESTA)
+   SOBRE A ORAL GOLD (COMPOSIÇÃO ASSIMÉTRICA)
    ========================================================================== */
 .about-clean-section {
   padding: var(--section-spacing) 0;
@@ -498,9 +522,9 @@ input, select {
 .about-photo-frame {
   width: 100%;
   aspect-ratio: 4 / 3.4;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-subtle);
   overflow: hidden;
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.06);
   border: 1px solid var(--hairline);
 }
 
@@ -511,10 +535,10 @@ input, select {
 }
 
 .about-caption {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   margin-top: 0.75rem;
-  font-style: italic;
+  letter-spacing: 0.02em;
 }
 
 .about-text-col {
@@ -537,7 +561,7 @@ input, select {
   flex-direction: column;
   gap: 0.65rem;
   margin-top: 0.5rem;
-  padding-top: 1rem;
+  padding-top: 1.15rem;
   border-top: 1px solid var(--hairline);
 }
 
@@ -550,15 +574,14 @@ input, select {
   font-weight: 500;
 }
 
-.point-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+.point-line {
+  width: 10px;
+  height: 1px;
   background: var(--champagne);
 }
 
 /* ==========================================================================
-   ESPECIALIDADES (CATÁLOGO VISUAL LIMPO, SEM CARDS IDÊNTICOS)
+   TRATAMENTOS (CATÁLOGO VISUAL, SEM CARDS IDÊNTICOS)
    ========================================================================== */
 .treatments-clean-section {
   padding: var(--section-spacing) 0;
@@ -574,20 +597,21 @@ input, select {
 .treatments-visual-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.25rem;
+  gap: 2.5rem 2rem;
 }
 
 .treatment-editorial-item {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .treatment-img-wrap {
   width: 100%;
   aspect-ratio: 16 / 11;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-subtle);
   overflow: hidden;
+  border: 1px solid var(--hairline);
   background: var(--bg-surface-subtle);
 }
 
@@ -599,15 +623,15 @@ input, select {
 }
 
 .treatment-editorial-item:hover .treatment-img-wrap img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .treatment-info h3 {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--text-main);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.3rem;
 }
 
 .treatment-info p {
@@ -617,7 +641,7 @@ input, select {
 }
 
 /* ==========================================================================
-   COMO ATENDEMOS (JORNADA 01 A 04 DESCOMPLICADA)
+   COMO ATENDEMOS (PASSO A PASSO RETILÍNEO & EDITORIAL)
    ========================================================================== */
 .journey-clean-section {
   padding: var(--section-spacing) 0;
@@ -653,28 +677,28 @@ input, select {
 
 .step-num {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--champagne-light);
-  min-width: 32px;
+  min-width: 28px;
 }
 
 .step-content h4 {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   font-weight: 600;
   color: #FFFFFF;
   margin-bottom: 0.25rem;
 }
 
 .step-content p {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-white-dim);
   line-height: 1.55;
 }
 
 /* ==========================================================================
-   DIFERENCIAIS REAIS (3 PILARES SEM CARDS ARTIFICIAIS)
+   DIFERENCIAIS REAIS (COLUNAS SEPARADAS POR LINHAS, SEM CARDS)
    ========================================================================== */
 .differentials-clean-section {
   padding: var(--section-spacing) 0;
@@ -685,95 +709,37 @@ input, select {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .pillar-editorial {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.75rem;
+  border-left: 1px solid var(--hairline);
+  padding-left: 1.5rem;
 }
 
 .pillar-num {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--champagne);
+  letter-spacing: 0.05em;
 }
 
 .pillar-editorial h3 {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.22rem;
   font-weight: 600;
   color: var(--text-main);
   line-height: 1.3;
 }
 
 .pillar-editorial p {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--text-body);
   line-height: 1.65;
-}
-
-/* ==========================================================================
-   AVALIAÇÕES REAIS DO GOOGLE (100% AUTÊNTICO)
-   ========================================================================== */
-.reviews-verified-section {
-  padding: var(--section-spacing) 0;
-  background: var(--bg-surface);
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-}
-
-.reviews-verified-box {
-  background: var(--bg-body);
-  border-radius: var(--radius-lg);
-  padding: clamp(2.5rem, 5vw, 4rem);
-  border: 1px solid var(--hairline);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-}
-
-.reviews-verified-left {
-  max-width: 620px;
-}
-
-.google-rating-line {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.google-rating-line .score {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-.google-rating-line .stars {
-  color: #FBBC05;
-  font-size: 1.25rem;
-  letter-spacing: 2px;
-}
-
-.reviews-verified-left h3 {
-  font-family: var(--font-heading);
-  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
-  font-weight: 600;
-  color: var(--text-main);
-  line-height: 1.3;
-  margin-bottom: 0.65rem;
-}
-
-.reviews-verified-left p {
-  font-size: 0.95rem;
-  color: var(--text-body);
-  line-height: 1.6;
 }
 
 /* ==========================================================================
@@ -781,7 +747,8 @@ input, select {
    ========================================================================== */
 .location-clean-section {
   padding: var(--section-spacing) 0;
-  background: var(--bg-body);
+  background: var(--bg-surface);
+  border-top: 1px solid var(--hairline);
 }
 
 .location-clean-grid {
@@ -835,7 +802,7 @@ input, select {
 .map-frame-clean {
   width: 100%;
   min-height: 380px;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-subtle);
   overflow: hidden;
   border: 1px solid var(--hairline);
 }
@@ -848,105 +815,242 @@ input, select {
 }
 
 /* ==========================================================================
-   FECHAMENTO & CONTATO DIRETO
+   BANNER CINEMATOGRÁFICO DE FUNDO (ESTILO TR TURISMO SOLICITADO NO ÁUDIO)
+   Foto de fundo, texto sobreposto, nota do Google e dados de CNPJ/local
    ========================================================================== */
-.closing-clean-section {
-  padding: clamp(5rem, 8vw, 7.5rem) 0;
-  background: var(--bg-dark);
+.cinematic-footer-banner {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   color: #FFFFFF;
   text-align: center;
 }
 
-.closing-content {
-  max-width: 680px;
+.banner-bg-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.banner-bg-img {
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.banner-scrim-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 16, 19, 0.84) 0%,
+    rgba(13, 16, 19, 0.75) 45%,
+    rgba(13, 16, 19, 0.95) 100%
+  );
+}
+
+.banner-inner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.5rem;
+  padding: clamp(5rem, 8vw, 8rem) 1.25rem;
 }
 
-.closing-content h2 {
+.banner-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-size: 0.78rem;
   font-weight: 600;
-  line-height: 1.2;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--champagne-light);
 }
 
-.closing-content p {
-  font-size: clamp(1rem, 1.2vw, 1.15rem);
-  color: var(--text-white-dim);
+.banner-tag::before,
+.banner-tag::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--champagne);
+}
+
+.banner-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
+}
+
+.banner-description {
+  font-size: clamp(1.025rem, 1.25vw, 1.18rem);
+  color: rgba(255, 255, 255, 0.86);
   line-height: 1.65;
+  max-width: 660px;
 }
 
-.closing-btns {
+/* Cartão com a Nota do Google dentro do Banner */
+.banner-google-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px);
+  padding: 1.25rem 2rem;
+  border-radius: var(--radius-subtle);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  max-width: 680px;
+  text-align: left;
+  margin: 0.5rem 0;
+}
+
+.google-badge-left {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.g-score {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.g-stars-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.g-stars {
+  color: #FBBC05;
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+}
+
+.g-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.banner-action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
-  justify-content: center;
   margin-top: 0.5rem;
 }
 
+/* Dados de CNPJ e Localização no rodapé do Banner */
+.banner-legal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  width: 100%;
+  max-width: 740px;
+  margin-top: 1rem;
+}
+
+.legal-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  text-align: center;
+}
+
+.legal-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--champagne-light);
+  font-weight: 600;
+}
+
+.legal-val {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.legal-separator {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
 /* ==========================================================================
-   FOOTER INSTITUCIONAL
+   FOOTER INSTITUCIONAL MÍNIMO
    ========================================================================== */
 .footer-clean {
-  background: #090C0E;
+  background: #080A0C;
   color: #FFFFFF;
-  padding: 3.5rem 0 2rem;
+  padding: 2.5rem 0;
   border-top: 1px solid var(--hairline-dark);
 }
 
-.footer-clean-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 2.5rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid var(--hairline-dark);
-}
-
-.footer-clean-bottom {
+.footer-clean-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding-top: 1.75rem;
-  font-size: 0.8rem;
+  gap: 1.25rem;
+  font-size: 0.82rem;
   color: var(--text-white-dim);
 }
 
+.footer-clean-inner a:hover {
+  color: var(--champagne-light);
+}
+
 /* ==========================================================================
-   WHATSAPP FLUTUANTE & MODAL
+   WHATSAPP FLUTUANTE & MODAL RETILÍNEO
    ========================================================================== */
 .whatsapp-float-clean {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
   z-index: 999;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-subtle);
   background: #25D366;
   color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
   transition: transform var(--t-fast);
 }
 
 .whatsapp-float-clean:hover {
-  transform: scale(1.08);
+  transform: translateY(-3px);
 }
 
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 19, 22, 0.75);
+  background: rgba(13, 16, 19, 0.8);
   backdrop-filter: blur(8px);
   z-index: 2000;
   display: flex;
@@ -966,11 +1070,11 @@ input, select {
 .modal-card {
   background: var(--bg-surface);
   width: 100%;
-  max-width: 500px;
-  border-radius: var(--radius-lg);
+  max-width: 480px;
+  border-radius: var(--radius-subtle);
   padding: clamp(2rem, 4vw, 2.5rem);
   position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
   border: 1px solid var(--hairline);
 }
 
@@ -991,7 +1095,7 @@ input, select {
 }
 
 .modal-header p {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-body);
   margin-bottom: 1.25rem;
 }
@@ -1012,7 +1116,7 @@ input, select {
   width: 100%;
   padding: 0.8rem 0.95rem;
   border: 1px solid var(--hairline);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-subtle);
   background: var(--bg-body);
   outline: none;
   transition: border-color var(--t-fast);
@@ -1035,6 +1139,10 @@ input, select {
 
   .hero-text-col {
     align-items: center;
+  }
+
+  .hero-tagline::before {
+    display: none;
   }
 
   .hero-actions {
@@ -1062,6 +1170,17 @@ input, select {
   .location-clean-grid {
     grid-template-columns: 1fr;
   }
+
+  .banner-google-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .google-badge-left {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1087,16 +1206,16 @@ input, select {
     grid-template-columns: 1fr;
   }
 
-  .reviews-verified-box {
+  .banner-legal-footer {
     flex-direction: column;
-    align-items: flex-start;
+    gap: 1rem;
   }
 
-  .footer-clean-top {
-    flex-direction: column;
+  .legal-separator {
+    display: none;
   }
 
-  .footer-clean-bottom {
+  .footer-clean-inner {
     flex-direction: column;
     text-align: center;
   }
