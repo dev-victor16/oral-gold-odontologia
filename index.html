@@ -18,7 +18,7 @@
   <meta property="og:image" content="assets/hero-smile.jpg">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='4' fill='%23C5A059'/><text x='50%' y='65%' font-size='48' font-family='sans-serif' font-weight='700' fill='%230D1013' text-anchor='middle'>OG</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='8' fill='%23C5A059'/><text x='50%' y='65%' font-size='48' font-family='sans-serif' font-weight='700' fill='%230D1013' text-anchor='middle'>OG</text></svg>">
 
   <!-- Estilos -->
   <link rel="stylesheet" href="css/style.css">
@@ -65,7 +65,7 @@
 <body>
 
   <!-- ==========================================================================
-       HEADER ARQUITETURAL & MINIMALISTA
+       HEADER LIMPO & MINIMALISTA
        ========================================================================== -->
   <header class="site-header" id="header">
     <div class="container header-inner">
@@ -104,42 +104,43 @@
 
   <main id="main-content">
     <!-- ==========================================================================
-         HERO COM ENQUADRAMENTO ARQUITETURAL (SEM BOTÕES REDONDOS)
+         HERO IMERSIVO COM FOTO DE FUNDO (ESTILO TR TURISMO SOLICITADO NO ÁUDIO)
+         A foto da moça ocupa o background completo da primeira parte da página
          ========================================================================== -->
-    <section class="hero-editorial" id="hero">
-      <div class="container hero-grid-clean">
-        <div class="hero-text-col">
-          <div class="hero-tagline" data-reveal="fade">
-            <span>Oral Gold • Palmares, Ibirité</span>
-          </div>
+    <section class="hero-immersive" id="hero">
+      <div class="hero-bg-media">
+        <img src="assets/hero-smile.jpg" alt="Oral Gold Odontologia no Palmares em Ibirité" class="hero-bg-img" data-parallax data-parallax-speed="0.04">
+        <div class="hero-bg-overlay"></div>
+      </div>
 
-          <h1 class="title-hero" data-reveal>
-            Odontologia com calma e cuidado, <span class="accent">perto de você</span> em Ibirité.
-          </h1>
+      <div class="container hero-content-immersive">
+        <h1 class="title-hero" data-reveal>
+          Odontologia com calma e cuidado, <span class="accent">perto de você</span> em Ibirité.
+        </h1>
 
-          <p class="lead-text light" data-reveal data-delay="100">
-            Consultas sem pressa, ambiente acolhedor e tratamentos explicados passo a passo. Um atendimento próximo na Avenida Presidente Tancredo Neves para quem valoriza a saúde do sorriso.
-          </p>
+        <p class="lead-text light" data-reveal data-delay="100">
+          Consultas sem pressa, ambiente acolhedor e tratamentos explicados passo a passo. Um atendimento próximo na Avenida Presidente Tancredo Neves para quem valoriza a saúde do sorriso.
+        </p>
 
-          <div class="hero-actions" data-reveal data-delay="200">
-            <a href="#agendamento" class="btn btn-primary" data-open-modal="agendamento">
-              Agendar avaliação
-            </a>
-            <a href="https://wa.me/5531991757023?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20com%20a%20Oral%20Gold." target="_blank" rel="noopener" class="btn btn-ghost-dark">
-              Falar no WhatsApp
-            </a>
-          </div>
+        <div class="hero-actions" data-reveal data-delay="200">
+          <a href="#agendamento" class="btn btn-primary" data-open-modal="agendamento">
+            Agendar avaliação
+          </a>
+          <a href="https://wa.me/5531991757023?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20com%20a%20Oral%20Gold." target="_blank" rel="noopener" class="btn btn-ghost-dark">
+            Falar no WhatsApp
+          </a>
         </div>
 
-        <div class="hero-img-col" data-reveal="soft-zoom">
-          <div class="hero-photo-wrap">
-            <img src="assets/clinic-ambience.jpg" alt="Consultório moderno e calmo da Oral Gold Odontologia em Ibirité" width="600" height="700" data-parallax data-parallax-speed="0.04">
-          </div>
-
-          <div class="hero-pill-badge">
+        <!-- AVALIAÇÃO DO GOOGLE + 'Oral Gold • Palmares, Ibirité' APÓS A NOTA CONFORME ÁUDIO -->
+        <div class="hero-trust-bar" data-reveal data-delay="300">
+          <div class="hero-google-eval">
             <span class="star">★</span>
             <strong>5.0 no Google</strong>
-            <span style="color: var(--text-white-dim); font-size: 0.75rem;">(58 avaliações)</span>
+            <span class="eval-count">(58 avaliações)</span>
+          </div>
+          <span class="trust-sep">•</span>
+          <div class="hero-location-after-eval">
+            <span>Oral Gold • Palmares, Ibirité</span>
           </div>
         </div>
       </div>
@@ -181,16 +182,16 @@
     </section>
 
     <!-- ==========================================================================
-         SOBRE A ORAL GOLD (NARRATIVA HONESTA & RESPIRO)
+         SOBRE A ORAL GOLD (NARRATIVA HONESTA & FOTO DO CONSULTÓRIO)
          ========================================================================== -->
     <section class="about-clean-section" id="sobre">
       <div class="container">
         <div class="about-editorial-grid">
           <div class="about-image-col" data-reveal="soft-zoom">
             <div class="about-photo-frame">
-              <img src="assets/consulta-humanizada.jpg" alt="Atendimento próximo e cuidadoso na Oral Gold Odontologia" width="600" height="480" data-parallax data-parallax-speed="0.04">
+              <img src="assets/clinic-ambience.jpg" alt="Consultório moderno da Oral Gold Odontologia em Ibirité" width="600" height="480" data-parallax data-parallax-speed="0.04">
             </div>
-            <p class="about-caption">Atendimento atencioso na Av. Presidente Tancredo Neves, 1164B — Palmares.</p>
+            <p class="about-caption">Consultório Oral Gold na Av. Presidente Tancredo Neves, 1164B — Palmares.</p>
           </div>
 
           <div class="about-text-col" data-reveal>
@@ -232,7 +233,7 @@
     </section>
 
     <!-- ==========================================================================
-         TRATAMENTOS (CATÁLOGO RETILÍNEO, SEM CARDS IDÊNTICOS)
+         TRATAMENTOS (CATÁLOGO VISUAL LIMPO, SEM CARDS IDÊNTICOS)
          ========================================================================== -->
     <section class="treatments-clean-section" id="tratamentos">
       <div class="container">
@@ -297,7 +298,7 @@
           <!-- 5. Próteses -->
           <div class="treatment-editorial-item" data-reveal data-delay="200">
             <div class="treatment-img-wrap">
-              <img src="assets/hero-smile.jpg" alt="Reabilitação com prótese dentária" width="400" height="275" loading="lazy">
+              <img src="assets/consulta-humanizada.jpg" alt="Reabilitação com prótese dentária" width="400" height="275" loading="lazy">
             </div>
             <div class="treatment-info">
               <h3>Próteses Dentárias</h3>
@@ -320,7 +321,7 @@
     </section>
 
     <!-- ==========================================================================
-         COMO ATENDEMOS (JORNADA 01 A 04 RETILÍNEA)
+         COMO ATENDEMOS (JORNADA 01 A 04)
          ========================================================================== -->
     <section class="journey-clean-section" id="como-atendemos">
       <div class="container">
@@ -376,7 +377,7 @@
     </section>
 
     <!-- ==========================================================================
-         DIFERENCIAIS REAIS (COLUNAS COM LINHAS RETAS, SEM CARDS)
+         DIFERENCIAIS REAIS (3 COLUNAS COM LINHAS RETAS)
          ========================================================================== -->
     <section class="differentials-clean-section">
       <div class="container">
@@ -483,44 +484,15 @@
     </section>
 
     <!-- ==========================================================================
-         BANNER CINEMATOGRÁFICO DE FUNDO (ESTILO TR TURISMO SOLICITADO NO ÁUDIO)
-         Foto de fundo da moça, texto sobreposto, nota do Google e dados de CNPJ/local
+         FECHAMENTO DIRETO & CONTATO
          ========================================================================== -->
-    <section class="cinematic-footer-banner" id="agendamento">
-      <div class="banner-bg-container">
-        <img src="assets/hero-smile.jpg" alt="Oral Gold Odontologia em Ibirité" class="banner-bg-img" data-parallax data-parallax-speed="0.06">
-        <div class="banner-scrim-overlay"></div>
-      </div>
-
-      <div class="container banner-inner-content" data-reveal>
-        <div class="banner-tag">
-          <span>ORAL GOLD ODONTOLOGIA • IBIRITÉ</span>
-        </div>
-
-        <h2 class="banner-heading">
-          Um novo conceito de cuidado e saúde bucal no Palmares.
-        </h2>
-
-        <p class="banner-description">
-          Consultas com tempo, ambiente acolhedor e tratamentos explicados com total clareza. Estamos prontos para receber você.
+    <section class="about-clean-section" style="padding: clamp(4.5rem, 7vw, 6.5rem) 0; background: var(--bg-dark); color: #FFFFFF; text-align: center;">
+      <div class="container" data-reveal style="max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.25rem;">
+        <h2 class="title-editorial light">Quer agendar uma avaliação?</h2>
+        <p class="lead-text light">
+          Fale com a recepção da Oral Gold no WhatsApp ou ligue para encontrar o melhor dia e horário para você.
         </p>
-
-        <!-- NOTA DO GOOGLE CONFORME SOLICITADO NO ÁUDIO -->
-        <div class="banner-google-card">
-          <div class="google-badge-left">
-            <span class="g-score">5.0</span>
-            <div class="g-stars-col">
-              <span class="g-stars">★★★★★</span>
-              <span class="g-label">Avaliação máxima no Google (58 avaliações de pacientes reais)</span>
-            </div>
-          </div>
-          <a href="https://maps.google.com/?q=Oral+Gold+Odontologia+Tancredo+Neves+1164+Ibirite+MG" target="_blank" rel="noopener" class="btn btn-ghost-light">
-            Ver avaliações no Google Maps ↗
-          </a>
-        </div>
-
-        <!-- AÇÕES / CTAS RETILÍNEOS -->
-        <div class="banner-action-buttons">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 0.5rem;">
           <button type="button" class="btn btn-primary" data-open-modal="agendamento">
             Agendar pelo formulário
           </button>
@@ -528,25 +500,12 @@
             Falar no WhatsApp (31) 99175-7023
           </a>
         </div>
-
-        <!-- DADOS DE LOCALIZAÇÃO & CNPJ CONFORME SOLICITADO NO ÁUDIO -->
-        <div class="banner-legal-footer">
-          <div class="legal-item">
-            <span class="legal-label">LOCALIZAÇÃO</span>
-            <span class="legal-val">Avenida Presidente Tancredo de Almeida Neves, 1164B — Palmares, Ibirité - MG</span>
-          </div>
-          <div class="legal-separator"></div>
-          <div class="legal-item">
-            <span class="legal-label">CNPJ DA EMPRESA</span>
-            <span class="legal-val">51.442.451/0001-10 • Oral Gold Odontologia LTDA</span>
-          </div>
-        </div>
       </div>
     </section>
   </main>
 
   <!-- ==========================================================================
-       FOOTER INSTITUCIONAL MÍNIMO
+       FOOTER INSTITUCIONAL
        ========================================================================== -->
   <footer class="footer-clean">
     <div class="container footer-clean-inner">
@@ -554,17 +513,17 @@
         © 2026 Oral Gold Odontologia. Todos os direitos reservados.
       </div>
       <div>
-        Palmares, Ibirité - Minas Gerais
+        CNPJ: 51.442.451/0001-10 • Av. Pres. Tancredo Neves, 1164B — Palmares, Ibirité - MG
       </div>
     </div>
   </footer>
 
-  <!-- WHATSAPP FLUTUANTE RETILÍNEO -->
+  <!-- WHATSAPP FLUTUANTE DISCRETO -->
   <a href="https://wa.me/5531991757023?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Oral%20Gold." target="_blank" rel="noopener" class="whatsapp-float-clean" aria-label="WhatsApp da Oral Gold">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-12.416c-5.514 0-10 4.486-10 10 0 1.761.458 3.417 1.258 4.862l-1.297 4.738 4.858-1.275c1.401.765 3.003 1.175 4.681 1.175 5.514 0 10-4.486 10-10s-4.486-10-10-10z"/></svg>
   </a>
 
-  <!-- MODAL DE AGENDAMENTO RETILÍNEO -->
+  <!-- MODAL DE AGENDAMENTO -->
   <div class="modal-backdrop" id="modalAgendamento" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card">
       <button class="modal-close" aria-label="Fechar Modal">&times;</button>
