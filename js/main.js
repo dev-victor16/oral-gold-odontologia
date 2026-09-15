@@ -53,12 +53,8 @@ function initHeaderScroll() {
 
 /* 3. STATUS DA CLÍNICA EM TEMPO REAL */
 function initClinicStatus() {
-  const statusEl = document.querySelector('.live-status');
-  if (!statusEl) return;
-
-  const dot = statusEl.querySelector('.status-dot');
-  const text = statusEl.querySelector('.status-text');
-  if (!dot || !text) return;
+  const statusEls = document.querySelectorAll('.live-status, .drawer-status-pill');
+  if (!statusEls.length) return;
 
   const now = new Date();
   const day = now.getDay(); // 0 = Dom, 1 = Seg, ..., 6 = Sáb
@@ -87,8 +83,12 @@ function initClinicStatus() {
     msg = 'Abre segunda às 09h';
   }
 
-  text.textContent = msg;
-  dot.style.background = isOpen ? '#25D366' : '#D99B38';
+  statusEls.forEach(statusEl => {
+    const dot = statusEl.querySelector('.status-dot');
+    const text = statusEl.querySelector('.status-text');
+    if (text) text.textContent = msg;
+    if (dot) dot.style.background = isOpen ? '#25D366' : '#D99B38';
+  });
 }
 
 /* 4. PARALLAX SUTIL EM IMAGENS */
@@ -133,6 +133,10 @@ function initModal() {
   const form = document.getElementById('formAgendamento');
 
   const open = () => {
+    const drawer = document.querySelector('.mobile-drawer-clean');
+    const drawerBg = document.querySelector('.mobile-drawer-backdrop');
+    if (drawer) drawer.classList.remove('is-open');
+    if (drawerBg) drawerBg.classList.remove('is-open');
     modal.classList.add('is-active');
     document.body.style.overflow = 'hidden';
   };
@@ -174,10 +178,11 @@ function initModal() {
   }
 }
 
-/* 6. MENU MOBILE */
+/* 6. MENU MOBILE / BARRA LATERAL */
 function initMobileMenu() {
   const btn = document.querySelector('.nav-toggle-btn');
   const drawer = document.querySelector('.mobile-drawer-clean');
+  const backdrop = document.querySelector('.mobile-drawer-backdrop');
   const closeBtn = document.querySelector('.mobile-drawer-close');
   const links = document.querySelectorAll('.mobile-drawer-clean a');
 
@@ -185,12 +190,38 @@ function initMobileMenu() {
 
   const toggle = (state) => {
     drawer.classList.toggle('is-open', state);
+    if (backdrop) backdrop.classList.toggle('is-open', state);
     document.body.style.overflow = state ? 'hidden' : '';
   };
 
-  btn.addEventListener('click', () => toggle(true));
-  if (closeBtn) closeBtn.addEventListener('click', () => toggle(false));
-  links.forEach(l => l.addEventListener('click', () => toggle(false)));
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggle(true);
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggle(false);
+    });
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', () => toggle(false));
+  }
+
+  links.forEach(l => {
+    l.addEventListener('click', () => {
+      toggle(false);
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+      toggle(false);
+    }
+  });
 }
 
 /* 7. SCROLL SUAVE PARA LINKS INTERNOS */
