@@ -1,6 +1,6 @@
 /**
- * ORAL GOLD ODONTOLOGIA — JAVASCRIPT PRINCIPAL
- * Motor de scroll, microinterações, cálculo de status em tempo real e agendamento WhatsApp
+ * ORAL GOLD ODONTOLOGIA — JAVASCRIPT REFINADO & LEVE
+ * Fluidez de scroll, status de atendimento real e agendamento via WhatsApp
  * Ibirité - MG
  */
 
@@ -14,267 +14,195 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
 });
 
-/* ==========================================================================
-   1. MOTOR DE SCROLL REVEAL (INSPIRADO NA FLUÍDEZ DA TR TURISMO)
-   ========================================================================== */
+/* 1. SCROLL REVEAL SUAVE & ORGÂNICO */
 function initScrollReveal() {
-  const revealElements = document.querySelectorAll('[data-reveal], .title-mask-reveal, .journey-steps');
+  const elements = document.querySelectorAll('[data-reveal]');
+  if (!elements.length) return;
 
-  if (!revealElements.length) return;
-
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px 0px -40px 0px',
-    threshold: 0.12
-  };
-
-  const revealObserver = new IntersectionObserver((entries, observer) => {
+  const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-revealed');
-        observer.unobserve(entry.target); // Revela apenas uma vez para não ficar cansativo
+        obs.unobserve(entry.target);
       }
     });
-  }, observerOptions);
+  }, {
+    rootMargin: '0px 0px -40px 0px',
+    threshold: 0.12
+  });
 
-  revealElements.forEach(el => revealObserver.observe(el));
+  elements.forEach(el => observer.observe(el));
 }
 
-/* ==========================================================================
-   2. HEADER DINÂMICO COM GLASSMORPHISM NO SCROLL
-   ========================================================================== */
+/* 2. HEADER COMPACTO NA ROLAGEM */
 function initHeaderScroll() {
   const header = document.querySelector('.site-header');
   if (!header) return;
 
-  let lastScrollY = window.scrollY;
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-    if (currentScrollY > 30) {
+  const onScroll = () => {
+    if (window.scrollY > 30) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
-    lastScrollY = currentScrollY;
   };
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 }
 
-/* ==========================================================================
-   3. STATUS DE FUNCIONAMENTO EM TEMPO REAL
-   Horários confirmados: Seg-Sex 09:00-19:00 | Sáb 08:00-13:00 | Dom Fechado
-   ========================================================================== */
+/* 3. STATUS DA CLÍNICA EM TEMPO REAL */
 function initClinicStatus() {
-  const statusContainer = document.querySelector('.header-status');
-  if (!statusContainer) return;
+  const statusEl = document.querySelector('.live-status');
+  if (!statusEl) return;
 
-  const statusText = statusContainer.querySelector('.status-text');
-  const statusDot = statusContainer.querySelector('.status-dot');
-  if (!statusText || !statusDot) return;
+  const dot = statusEl.querySelector('.status-dot');
+  const text = statusEl.querySelector('.status-text');
+  if (!dot || !text) return;
 
   const now = new Date();
-  const day = now.getDay(); // 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
-  const hour = now.getHours();
-  const minute = now.getMinutes();
-  const currentTime = hour + minute / 60;
+  const day = now.getDay(); // 0 = Dom, 1 = Seg, ..., 6 = Sáb
+  const time = now.getHours() + now.getMinutes() / 60;
 
   let isOpen = false;
-  let statusMessage = '';
+  let msg = '';
 
   if (day >= 1 && day <= 5) {
-    // Segunda a Sexta: 09:00 às 19:00
-    if (currentTime >= 9.0 && currentTime < 19.0) {
+    if (time >= 9.0 && time < 19.0) {
       isOpen = true;
-      statusMessage = 'Aberto hoje até 19h';
-    } else if (currentTime < 9.0) {
-      statusMessage = 'Abre hoje às 09h';
+      msg = 'Aberto hoje até 19h';
+    } else if (time < 9.0) {
+      msg = 'Abre hoje às 09h';
     } else {
-      statusMessage = day === 5 ? 'Abre sábado às 08h' : 'Abre amanhã às 09h';
+      msg = day === 5 ? 'Abre sábado às 08h' : 'Abre amanhã às 09h';
     }
   } else if (day === 6) {
-    // Sábado: 08:00 às 13:00
-    if (currentTime >= 8.0 && currentTime < 13.0) {
+    if (time >= 8.0 && time < 13.0) {
       isOpen = true;
-      statusMessage = 'Aberto hoje até 13h';
-    } else if (currentTime < 8.0) {
-      statusMessage = 'Abre hoje às 08h';
+      msg = 'Aberto hoje até 13h';
     } else {
-      statusMessage = 'Abre segunda às 09h';
+      msg = 'Abre segunda às 09h';
     }
   } else {
-    // Domingo
-    statusMessage = 'Abre segunda às 09h';
+    msg = 'Abre segunda às 09h';
   }
 
-  statusText.textContent = statusMessage;
-  if (isOpen) {
-    statusDot.style.background = '#25D366';
-  } else {
-    statusDot.style.background = '#E5A93C'; // Laranja elegante quando em recesso
-  }
+  text.textContent = msg;
+  dot.style.background = isOpen ? '#25D366' : '#D99B38';
 }
 
-/* ==========================================================================
-   4. PARALLAX SUTIL EM ELEMENTOS VISUAIS (60FPS COM RAF)
-   ========================================================================== */
+/* 4. PARALLAX SUTIL EM IMAGENS */
 function initParallax() {
-  // Desativa em dispositivos móveis ou caso prefira movimento reduzido
   if (window.innerWidth < 1024 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
 
-  const parallaxElements = document.querySelectorAll('[data-parallax]');
-  if (!parallaxElements.length) return;
+  const items = document.querySelectorAll('[data-parallax]');
+  if (!items.length) return;
 
   let ticking = false;
 
-  const updateParallax = () => {
-    const scrollY = window.scrollY;
-    const windowHeight = window.innerHeight;
-
-    parallaxElements.forEach(el => {
+  const update = () => {
+    const vh = window.innerHeight;
+    items.forEach(el => {
       const rect = el.getBoundingClientRect();
-      const speed = parseFloat(el.getAttribute('data-parallax-speed')) || 0.08;
-
-      // Executa apenas quando o elemento está próximo ou visível na tela
-      if (rect.top < windowHeight && rect.bottom > 0) {
-        const offset = (rect.top - windowHeight / 2) * speed;
+      const speed = parseFloat(el.getAttribute('data-parallax-speed')) || 0.05;
+      if (rect.top < vh && rect.bottom > 0) {
+        const offset = (rect.top - vh / 2) * speed;
         el.style.transform = `translateY(${offset.toFixed(1)}px)`;
       }
     });
-
     ticking = false;
   };
 
   window.addEventListener('scroll', () => {
     if (!ticking) {
-      requestAnimationFrame(updateParallax);
+      requestAnimationFrame(update);
       ticking = true;
     }
   }, { passive: true });
 }
 
-/* ==========================================================================
-   5. MODAL DE AGENDAMENTO INTELIGENTE INTEGRADO AO WHATSAPP
-   ========================================================================== */
+/* 5. MODAL DE AGENDAMENTO SIMPLES VIA WHATSAPP */
 function initModal() {
   const modal = document.getElementById('modalAgendamento');
   if (!modal) return;
 
-  const openTriggers = document.querySelectorAll('[data-open-modal="agendamento"]');
-  const closeTriggers = modal.querySelectorAll('.modal-close, .modal-backdrop-close');
+  const openBtns = document.querySelectorAll('[data-open-modal="agendamento"]');
+  const closeBtn = modal.querySelector('.modal-close');
   const form = document.getElementById('formAgendamento');
 
-  const openModal = (specialtyPreset = '') => {
+  const open = () => {
     modal.classList.add('is-active');
     document.body.style.overflow = 'hidden';
-
-    if (specialtyPreset && form) {
-      const select = form.querySelector('#inputEspecialidade');
-      if (select) select.value = specialtyPreset;
-    }
-
-    const firstInput = form ? form.querySelector('input') : null;
-    if (firstInput) setTimeout(() => firstInput.focus(), 150);
   };
 
-  const closeModal = () => {
+  const close = () => {
     modal.classList.remove('is-active');
     document.body.style.overflow = '';
   };
 
-  openTriggers.forEach(btn => {
+  openBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const preset = btn.getAttribute('data-preset-treatment') || '';
-      openModal(preset);
+      open();
     });
   });
 
-  closeTriggers.forEach(btn => {
-    btn.addEventListener('click', closeModal);
-  });
-
+  if (closeBtn) closeBtn.addEventListener('click', close);
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
+    if (e.target === modal) close();
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('is-active')) {
-      closeModal();
-    }
+    if (e.key === 'Escape' && modal.classList.contains('is-active')) close();
   });
 
-  // Envio do formulário para o WhatsApp com mensagem formatada
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      const nome = form.querySelector('#inputNome')?.value.trim() || '';
+      const servico = form.querySelector('#inputServico')?.value || 'Avaliação';
 
-      const nome = form.querySelector('#inputNome').value.trim();
-      const telefone = form.querySelector('#inputTelefone').value.trim();
-      const especialidade = form.querySelector('#inputEspecialidade').value;
-      const periodo = form.querySelector('#inputPeriodo').value;
+      let text = `Olá! Meu nome é *${nome}*.\n`;
+      text += `Gostaria de agendar uma avaliação na Oral Gold em Ibirité para *${servico}*.`;
 
-      let mensagem = `Olá! Meu nome é *${nome}*.\n`;
-      mensagem += `Gostaria de agendar uma avaliação na Oral Gold em Ibirité.\n\n`;
-      mensagem += `• *Especialidade de interesse:* ${especialidade}\n`;
-      mensagem += `• *Melhor período para mim:* ${periodo}\n`;
-      if (telefone) mensagem += `• *Telefone para contato:* ${telefone}\n`;
-
-      const encodedMsg = encodeURIComponent(mensagem);
-      const whatsappUrl = `https://wa.me/5531991757023?text=${encodedMsg}`;
-
-      closeModal();
-      window.open(whatsappUrl, '_blank');
+      const url = `https://wa.me/5531991757023?text=${encodeURIComponent(text)}`;
+      close();
+      window.open(url, '_blank');
     });
   }
 }
 
-/* ==========================================================================
-   6. MENU MOBILE (DRAWER LATERAL ELEGANTE)
-   ========================================================================== */
+/* 6. MENU MOBILE */
 function initMobileMenu() {
-  const toggleBtn = document.querySelector('.nav-toggle');
-  const drawer = document.querySelector('.mobile-menu-drawer');
+  const btn = document.querySelector('.nav-toggle-btn');
+  const drawer = document.querySelector('.mobile-drawer-clean');
   const closeBtn = document.querySelector('.mobile-drawer-close');
-  const navLinks = document.querySelectorAll('.mobile-drawer-links a, .mobile-drawer-cta');
+  const links = document.querySelectorAll('.mobile-drawer-clean a');
 
-  if (!toggleBtn || !drawer) return;
+  if (!btn || !drawer) return;
 
-  const toggleDrawer = (open) => {
-    drawer.classList.toggle('is-open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+  const toggle = (state) => {
+    drawer.classList.toggle('is-open', state);
+    document.body.style.overflow = state ? 'hidden' : '';
   };
 
-  toggleBtn.addEventListener('click', () => toggleDrawer(true));
-  if (closeBtn) closeBtn.addEventListener('click', () => toggleDrawer(false));
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => toggleDrawer(false));
-  });
+  btn.addEventListener('click', () => toggle(true));
+  if (closeBtn) closeBtn.addEventListener('click', () => toggle(false));
+  links.forEach(l => l.addEventListener('click', () => toggle(false)));
 }
 
-/* ==========================================================================
-   7. SCROLL SUAVE COM COMPENSAÇÃO DE HEADER FIXO
-   ========================================================================== */
+/* 7. SCROLL SUAVE PARA LINKS INTERNOS */
 function initSmoothScroll() {
-  const internalLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
-
-  internalLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-
-      if (targetElement) {
+  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
         e.preventDefault();
-        const headerHeight = document.querySelector('.site-header')?.offsetHeight || 75;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
-
+        const headerH = document.querySelector('.site-header')?.offsetHeight || 70;
         window.scrollTo({
-          top: targetPosition,
+          top: target.getBoundingClientRect().top + window.scrollY - headerH,
           behavior: 'smooth'
         });
       }
